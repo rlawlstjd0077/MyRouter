@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" stylesheets="@main.css"
+          fx:controller="controlsystem.controller.MainController"
+          prefHeight="400.0" prefWidth="600.0">
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="TOP_LEFT">
+        <HBox prefHeight="10" minHeight="10" >
+            <ImageView fitWidth="22" fitHeight="22">
+                <Image url="@commons/image/powerIcon.png"/>
+                <HBox.margin>
+                    <Insets right="4"/>
+                </HBox.margin>
+            </ImageView>
+            <RadioButton fx:id="powerBtn" styleClass="radio-power">
+
+            </RadioButton>
+            <VBox.margin>
+                <Insets top="20" left="20"/>
+            </VBox.margin>
+        </HBox>
+    </VBox>
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" alignment="TOP_CENTER">
+        <GridPane.margin>
+            <Insets top="40"/>
+        </GridPane.margin>
+        <JFXRippler>
+            <Label text="My Router">
+                <font>
+                    <Font size="32.0" name="Roboto-Bold"/>
+                </font>
+            </Label>
+        </JFXRippler>
+    </VBox>
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="TOP_CENTER">
+        <JFXButton text="WireLess Setting" fx:id="wireLessBtn" styleClass="button-raised"/>
+    </VBox>
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="TOP_CENTER">
+        <JFXButton text="PortForward Setting" fx:id="portForwardBtn" styleClass="button-raised"/>
+    </VBox>
+    <VBox GridPane.columnIndex="2" GridPane.rowIndex="1" alignment="TOP_CENTER">
+        <JFXButton text="StartURL Setting" fx:id="startURLBtn" styleClass="button-raised"/>
+    </VBox>
+    <VBox GridPane.columnIndex="3" GridPane.rowIndex="1" alignment="TOP_CENTER">
+        <JFXButton text="TimeLimit Setting" fx:id="timeLimitBtn" styleClass="button-raised"/>
+    </VBox>
+    <VBox GridPane.columnIndex="4" GridPane.rowIndex="1" alignment="TOP_CENTER">
+        <JFXButton text="DHCP Setting" fx:id="DHCPBtn" styleClass="button-raised"/>
+    </VBox>
+    <columnConstraints>
+        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints percentHeight="50" vgrow="ALWAYS"/>
+        <RowConstraints percentHeight="50" vgrow="ALWAYS"/>
+    </rowConstraints>
+</GridPane>
