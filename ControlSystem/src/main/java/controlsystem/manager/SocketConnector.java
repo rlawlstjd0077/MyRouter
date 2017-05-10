@@ -66,8 +66,7 @@ public class SocketConnector {
         }
     }
 
-    public static void sendMsg(String msg) throws IOException
-    {
-        getSocket().getOutputStream().write((msg + '\n').getBytes());
+    public static void sendMsg(String msg) throws IOException {
+            getSocket().getOutputStream().write((msg + '\n').getBytes());
     }
 }

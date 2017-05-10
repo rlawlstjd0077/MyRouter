@@ -11,7 +11,7 @@
 <?import javafx.scene.image.Image?>
 <GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" stylesheets="@main.css"
           fx:controller="controlsystem.controller.MainController"
-          prefHeight="400.0" prefWidth="600.0">
+          prefHeight="400.0" prefWidth="800.0">
     <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" alignment="TOP_LEFT">
         <HBox prefHeight="10" minHeight="10" >
             <ImageView fitWidth="22" fitHeight="22">
@@ -28,7 +28,7 @@
             </VBox.margin>
         </HBox>
     </VBox>
-    <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" alignment="TOP_CENTER">
+    <VBox GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="2" alignment="TOP_CENTER">
         <GridPane.margin>
             <Insets top="40"/>
         </GridPane.margin>
@@ -39,6 +39,22 @@
                 </font>
             </Label>
         </JFXRippler>
+    </VBox>
+    <VBox GridPane.columnIndex="5" GridPane.rowIndex="0" alignment="TOP_RIGHT">
+        <HBox prefWidth="10" minHeight="10" alignment="CENTER_RIGHT">
+            <JFXButton fx:id="refreshBtn">
+                <graphic>
+                    <ImageView fitWidth="25" fitHeight="25">
+                        <image>
+                            <Image url="@commons/image/reset.png"/>
+                        </image>
+                    </ImageView>
+                </graphic>
+            </JFXButton>
+            <VBox.margin>
+                <Insets top="16"/>
+            </VBox.margin>
+        </HBox>
     </VBox>
     <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" alignment="TOP_CENTER">
         <JFXButton text="WireLess Setting" fx:id="wireLessBtn" styleClass="button-raised"/>
@@ -55,12 +71,16 @@
     <VBox GridPane.columnIndex="4" GridPane.rowIndex="1" alignment="TOP_CENTER">
         <JFXButton text="DHCP Setting" fx:id="DHCPBtn" styleClass="button-raised"/>
     </VBox>
+    <VBox GridPane.columnIndex="5" GridPane.rowIndex="1" alignment="TOP_CENTER">
+        <JFXButton text="Connection List" fx:id="connectionListBtn" styleClass="button-raised"/>
+    </VBox>
     <columnConstraints>
-        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
-        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
-        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
-        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
-        <ColumnConstraints percentWidth="20" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="16.5" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="16.5" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="16.5" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="16.5" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="16.5" hgrow="ALWAYS"/>
+        <ColumnConstraints percentWidth="17" hgrow="ALWAYS"/>
     </columnConstraints>
     <rowConstraints>
         <RowConstraints percentHeight="50" vgrow="ALWAYS"/>

@@ -19,7 +19,7 @@ public class Main extends Application {
         );
         Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         primaryStage.setTitle("My Router");
-        primaryStage.setScene(new Scene(root, 1000, 275));
+        primaryStage.setScene(new Scene(root, 1200, 275));
         primaryStage.show();
     }
 

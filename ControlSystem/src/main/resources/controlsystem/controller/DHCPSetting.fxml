@@ -15,7 +15,7 @@
                 <Insets left="20"/>
             </padding>
             <Label text="DHCP power : "/>
-            <JFXToggleButton fx:id="DHCPPower"/>
+            <JFXToggleButton fx:id="DHCPPower" selected="true"/>
         </HBox>
     </top>
     <center>

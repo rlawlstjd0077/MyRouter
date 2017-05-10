@@ -1,9 +1,8 @@
 package emulator.manger.network;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import emulator.data.Connection;
+
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -13,6 +12,15 @@ public class DeviceSocketListener extends Thread{
     private Socket socket;
     private BufferedReader br = null;
     private PrintWriter pw = null;
+    public interface OnConnectionRefused{
+        void onConnectionRefused();
+    }
+
+    private OnConnectionRefused mConnectionRefused;
+
+    public void setOnConnectionRefused(OnConnectionRefused mConnectionRefused){
+        this.mConnectionRefused = mConnectionRefused;
+    }
 
     public DeviceSocketListener(Socket socket){
         this.socket = socket;
@@ -23,7 +31,7 @@ public class DeviceSocketListener extends Thread{
         try{
             service();
         } catch (IOException e) {
-            e.printStackTrace();
+            mConnectionRefused.onConnectionRefused();
         }
     }
 
@@ -36,6 +44,17 @@ public class DeviceSocketListener extends Thread{
             if(str == null){
 
             }
+        }
+    }
+
+    public void sendMessage(String msg) {
+        try {
+            System.out.println("Send Message : " + msg);
+            OutputStream stream = socket.getOutputStream();
+            stream.write(msg.getBytes());
+            stream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

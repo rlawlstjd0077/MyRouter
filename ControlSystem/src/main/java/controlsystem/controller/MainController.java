@@ -14,6 +14,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,6 +39,10 @@ public class MainController implements Initializable {
     private JFXButton DHCPBtn;
     @FXML
     private RadioButton powerBtn;
+    @FXML
+    private JFXButton connectionListBtn;
+    @FXML
+    private JFXButton refreshBtn;
 
     private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
@@ -119,6 +125,18 @@ public class MainController implements Initializable {
                 });
                 newStage.showAndWait();
                 break;
+            case "connectionListBtn" :
+                ConnectionListController connectionListController = new ConnectionListController();
+                newStage = settingNewState(new Scene(connectionListController), "ConnectionList");
+                newStage.showAndWait();
+                break;
+            case "refreshBtn":
+                try {
+                    logger.info("Config Refresh");
+                    SocketConnector.sendMsg(new JSONObject().put("type", "reset").toString());
+                } catch (IOException e) {
+                } catch (JSONException e) {
+                }
         }
     }
 
@@ -146,8 +164,14 @@ public class MainController implements Initializable {
             });
             newStage.showAndWait();
         }else{                          //Power Off
+            logger.info("Emulator Power is Off");
             setButtonsDisable(true);
             systemPowerOff();
+            try {
+                SocketConnector.sendMsg(new JSONObject().put("type", "powerOff").toString());
+            } catch (JSONException e) {
+            } catch (IOException e) {
+            }
         }
     }
 
@@ -158,6 +182,8 @@ public class MainController implements Initializable {
         startURLBtn.setOnMouseClicked(event -> menuHandle(event));
         timeLimitBtn.setOnMouseClicked(event -> menuHandle(event));
         DHCPBtn.setOnMouseClicked(event -> menuHandle(event));
+        connectionListBtn.setOnMouseClicked(event -> menuHandle(event));
+        refreshBtn.setOnMouseClicked(event -> menuHandle(event));
         powerBtn.setOnMouseClicked(event -> powerHandle());
         setButtonsDisable(true);
 
@@ -201,5 +227,7 @@ public class MainController implements Initializable {
         startURLBtn.setDisable(state);
         timeLimitBtn.setDisable(state);
         DHCPBtn.setDisable(state);
+        connectionListBtn.setDisable(state);
+        refreshBtn.setDisable(state);
     }
 }

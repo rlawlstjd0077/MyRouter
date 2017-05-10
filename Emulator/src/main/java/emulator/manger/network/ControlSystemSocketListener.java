@@ -1,7 +1,7 @@
 package emulator.manger.network;
 
-import emulator.Emulator;
 import emulator.manger.JSONManager;
+import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.Socket;
 
 /**
  * Created by dsm_025 on 2017-04-29.
@@ -31,6 +30,7 @@ public class ControlSystemSocketListener extends Thread {
     }
 
     public ControlSystemSocketListener() {
+        logger.info("ControlSystem Socket is On");
         try {
             im = ControlSystemSocketManager.getSocket().getInputStream();
             br = new BufferedReader(new InputStreamReader(im));
@@ -57,10 +57,11 @@ public class ControlSystemSocketListener extends Thread {
                      im = ControlSystemSocketManager.getSocket().getInputStream();
                      br = new BufferedReader(new InputStreamReader(im));
                      try {
-                         ControlSystemSocketManager.sendMsg(JSONManager.parseJsonFile());
+                         ControlSystemSocketManager.sendMsg(JSONManager.bindConfigMsg(JSONManager.readConfigFile()));
                      } catch (IOException e2) {
+                     } catch (JSONException e1) {
                      }
-                } catch (IOException e1) {
+                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
                 continue;
